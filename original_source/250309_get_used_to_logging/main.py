@@ -1,13 +1,12 @@
+# https://docs.python.org/ko/3.8/howto/logging-cookbook.html
+
 import logging
-import calculate
+import calculation
+
 
 #main 로거
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-# calculate 로거
-calc_logger = logging.getLogger('calculate')
-calc_logger.setLevel(logging.DEBUG)
+main_logger = logging.getLogger('main')
+main_logger.setLevel(logging.DEBUG)
 
 # Handler에 formatter 포함
 ch = logging.StreamHandler()
@@ -15,14 +14,17 @@ ch.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 ch.setFormatter(formatter)
 
-# 각 logger들에 handler 적용
-logger.addHandler(ch)
+# handler 적용
+main_logger.addHandler(ch)
 
 # logger 사용
+main_logger.info("creating an instance of calculation.calculation, called 'calc'")
+calc = calculation.calculation()
+
+main_logger.info('setting a,b for calc.divide()')
 a = 10
 b = 0
-try: 
-    result = calculate.divide(a, b)
-    logger.info(f"{a} / {b} = {result}")
-except Exception as e:
-    logger.error(e)
+
+main_logger.info('executing calc.divide()')
+result = calc.divide(a, b)
+main_logger.info(f"getting result of cal.divide: {a} / {b} = {result}")
