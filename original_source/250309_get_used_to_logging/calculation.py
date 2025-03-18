@@ -1,11 +1,13 @@
 import logging
+import logging.config
+logging.config.fileConfig('logging.ini')
 
-logger = logging.getLogger('main.calculation')
+logger = logging.getLogger('root')
 logger.propagate = True 
 
 class calculation:
     def __init__(self):
-        self.logger = logging.getLogger('main.calculation.calculation')
+        self.logger = logging.getLogger('root')
         self.logger.info("creating an instance of calculation.calculation")
     
     def sum(self, a:int, b:int):
