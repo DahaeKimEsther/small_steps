@@ -1,6 +1,12 @@
 import logging
 import logging.config
-logging.config.fileConfig("C:/Users/dahae/workspace/projects/small_steps/original_source/250309_get_used_to_logging/logger.conf")
+import os
+from datetime import datetime
+
+logging_parent_path = os.path.dirname(os.path.abspath(__file__))
+logfile_name = f"logfile_{datetime.strftime(datetime.now(), '%Y%m%d')}.log"
+logging.config.fileConfig(fname=os.path.join(logging_parent_path, 'logger.conf'),
+                          defaults={"logfilename": logfile_name})
 logging.info('set calculation.py')
 
 class calculation:
