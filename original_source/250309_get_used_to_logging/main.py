@@ -7,7 +7,7 @@ import os
 from datetime import datetime
 
 logging_parent_path = os.path.dirname(os.path.abspath(__file__))
-logfile_name = f"logfile_{datetime.strftime(datetime.now(), '%Y%m%d')}.log"
+logfile_name = os.path.join(logging_parent_path, f"logfile_{datetime.strftime(datetime.now(), '%Y%m%d')}.log").replace("\\", "/")
 logging.config.fileConfig(fname=os.path.join(logging_parent_path, 'logger.conf'),
                           defaults={"logfilename": logfile_name})
 
