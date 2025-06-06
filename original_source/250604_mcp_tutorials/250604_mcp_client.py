@@ -7,7 +7,7 @@ from langgraph.prebuilt import create_react_agent
 import asyncio
 import os
 from dotenv import load_dotenv
-load_dotenv("./projects/.env")
+load_dotenv()
 
 MCP_SERVER_ABS_PATH = os.getenv("MCP_SERVER_ABS_PATH")
 server_params = StdioServerParameters(
@@ -16,6 +16,9 @@ server_params = StdioServerParameters(
 )
 
 async def run_agent():
+    # langchain-mcp-adapters: https://github.com/langchain-ai/langchain-mcp-adapters
+    # - cannot execute code below in jupyter notebook
+    # - need to add 'async def' above 'async with'
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(read, write) as session:
             # Initialize the connection
