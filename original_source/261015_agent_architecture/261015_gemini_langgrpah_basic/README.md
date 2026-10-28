@@ -1,4 +1,6 @@
 # gemini-langgraph-basic
+* 출처: [Gemini 및 LangGraph를 사용하여 처음부터 ReAct 에이전트 만들기](https://ai.google.dev/gemini-api/docs/langgraph-example?hl=ko)
+* 주의: 이 레포지토리의 연습코드에서는 gemini api 대신에 openai api를 사용하였습니다.
 
 ## 가상환경(.venv) 만들기
 
